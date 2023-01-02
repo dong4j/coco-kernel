@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>io.github.dong4j</groupId>
-    <artifactId>coco-supreme</artifactId>
+    <artifactId>coco-starter-parent</artifactId>
     <version>2023.1.1-SNAPSHOT</version>
     <relativePath/>
   </parent>
@@ -11,8 +11,84 @@
   <artifactId>coco-kernel</artifactId>
   <version>${revision}</version>
   <packaging>pom</packaging>
+  <name>Coco Kernel</name>
+  <url>https://github.com/dong4j/coco-kernel</url>
+  <description>基础组件库</description>
+
+  <modules>
+    <module>coco-kernel-common</module>
+  </modules>
 
   <properties>
+    <maven.test.skip>false</maven.test.skip>
+    <maven.javadoc.skip>false</maven.javadoc.skip>
     <revision>2023.1.1-SNAPSHOT</revision>
+    <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
+    <swagger.version>1.6.9</swagger.version>
+    <reflections.version>0.10.2</reflections.version>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.github.dong4j</groupId>
+        <artifactId>coco-company-dependencies</artifactId>
+        <version>${coco-company-dependencies.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>transmittable-thread-local</artifactId>
+        <version>${transmittable-thread-local.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>${swagger.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.reflections</groupId>
+        <artifactId>reflections</artifactId>
+        <version>${reflections.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.github.dong4j</groupId>
+        <artifactId>coco-kernel-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+  <developers>
+    <developer>
+      <name>dong4j</name>
+      <email>dong4j@gmail.com</email>
+      <id>dong4j</id>
+      <organizationUrl>https://www.dong4j.info</organizationUrl>
+      <roles>
+        <role>designer</role>
+      </roles>
+    </developer>
+  </developers>
+  <organization>
+    <url>https://www.dong4j.info</url>
+  </organization>
+  <scm>
+    <url>https://github.com/dong4j/coco-kernel</url>
+    <connection>scm:git:https://github.com/dong4j/coco-kernel.git</connection>
+    <developerConnection>scm:git:https://github.com/dong4j/coco-kernel.git</developerConnection>
+  </scm>
 </project>
