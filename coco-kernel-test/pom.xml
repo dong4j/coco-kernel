@@ -10,7 +10,7 @@
     <version>${revision}</version>
   </parent>
 
-  <artifactId>coco-element-test</artifactId>
+  <artifactId>coco-kernel-test</artifactId>
 
   <properties>
     <jmh.version>1.36</jmh.version>

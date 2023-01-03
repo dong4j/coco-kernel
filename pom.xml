@@ -17,7 +17,8 @@
 
   <modules>
     <module>coco-kernel-common</module>
-    <module>coco-element-test</module>
+    <module>coco-kernel-test</module>
+    <module>coco-kernel-notify</module>
   </modules>
 
   <properties>

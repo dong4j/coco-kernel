@@ -53,7 +53,7 @@ public class BeanMocker implements Mocker<Object> {
                     return cacheBean;
                 }
             }
-            Object result = this.clazz.newInstance();
+            Object result = this.clazz.getDeclaredConstructor().newInstance();
             mockConfig.cacheBean(this.clazz.getName(), result);
             for (Class<?> currentClass = this.clazz; currentClass != Object.class; currentClass = currentClass.getSuperclass()) {
                 // 模拟有setter方法的字段
