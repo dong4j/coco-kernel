@@ -1,5 +1,7 @@
 package io.github.dong4j.coco.kernel.common.api;
 
+import com.google.common.collect.Maps;
+
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import org.jetbrains.annotations.Contract;
@@ -273,7 +275,15 @@ public final class R<T> extends Result<T> {
      */
     @NotNull
     public static Result<Map<String, Object>> values(@NotNull Object... args) {
-        return succeed(CollectionUtils.toMap(args));
+        int separate = 2;
+        if (args.length % separate != 0) {
+            throw new IllegalArgumentException("wrong number of arguments for met, keysValues length can not be odd");
+        }
+        Map<String, Object> keyValueMap = Maps.newHashMapWithExpectedSize(args.length / 2);
+        for (int i = args.length - separate; i >= 0; i -= separate) {
+            keyValueMap.put((String) args[i], args[i + 1]);
+        }
+        return succeed(keyValueMap);
     }
 
     /**
@@ -300,7 +310,6 @@ public final class R<T> extends Result<T> {
      * @param success success
      * @param data    data
      * @param message message
-     * @param traceId trace id
      * @return the map
      * @since 1.0.0
      */

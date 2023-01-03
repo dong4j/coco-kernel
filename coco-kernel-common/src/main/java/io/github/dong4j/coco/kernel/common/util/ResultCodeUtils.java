@@ -1,7 +1,5 @@
 package io.github.dong4j.coco.kernel.common.util;
 
-import com.baomidou.mybatisplus.core.toolkit.StringPool;
-
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
@@ -10,6 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
+import cn.hutool.core.text.StrPool;
 import io.github.dong4j.coco.kernel.common.Result;
 import io.github.dong4j.coco.kernel.common.annotation.BusinessLevel;
 import io.github.dong4j.coco.kernel.common.annotation.ModelSerial;
@@ -68,7 +67,7 @@ public class ResultCodeUtils {
         if (resultCode.getClass().isAnnotationPresent(ModelSerial.class)) {
             modelNameSerial = resultCode.getClass().getAnnotation(ModelSerial.class).value();
         }
-        modelNameSerial = modelNameSerial.concat(StringPool.DASH);
+        modelNameSerial = modelNameSerial.concat(StrPool.DASHED);
 
         // 缓存中获取, 如果缓存中没有, 则需要先初始化到缓存
         if (!ENUM_FIELD_CACHE.containsKey(simpleName)) {
@@ -91,7 +90,7 @@ public class ResultCodeUtils {
                 errorSource = ThirdLevel.class.getSimpleName().substring(0, 1);
             }
         }
-        errorSource = errorSource.concat(StringPool.DOT);
+        errorSource = errorSource.concat(StrPool.DOT);
 
         return errorSource + modelNameSerial + resultCode.getCode();
     }
@@ -107,7 +106,7 @@ public class ResultCodeUtils {
     public @NotNull Integer convert(String code) {
         Assertions.notBlank(code, "code 不能为 空");
 
-        String[] split = code.split(StringPool.DASH);
+        String[] split = code.split(StrPool.DASHED);
         if (split.length == 2) {
             return Integer.parseInt(split[1]);
         } else if (split.length == 3) {

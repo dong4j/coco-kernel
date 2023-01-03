@@ -16,12 +16,11 @@
 
 package com.baomidou.mybatisplus.core.metadata;
 
-import com.baomidou.mybatisplus.core.toolkit.ClassUtils;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.function.Function;
 
+import cn.hutool.core.util.ReflectUtil;
 import io.github.dong4j.coco.kernel.common.bean.BasePage;
 
 import static java.util.stream.Collectors.toList;
@@ -51,7 +50,6 @@ public interface IPage<T> extends Serializable {
     }
 
     /**
-     * {@link com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor#isOptimizeJoin()}
      * 两个参数都为 true 才会进行sql处理
      *
      * @return true 是 / false 否
@@ -196,7 +194,7 @@ public interface IPage<T> extends Serializable {
      */
     @SuppressWarnings( {"unchecked", "rawtypes"})
     default <P extends BasePage<?>> P wrapper(Class<P> clazz) {
-        P wrapper = ClassUtils.newInstance(clazz);
+        P wrapper = ReflectUtil.newInstance(clazz);
         wrapper.setPagination((IPage) this);
         return wrapper;
     }

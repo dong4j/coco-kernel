@@ -1,5 +1,7 @@
 package io.github.dong4j.coco.kernel.common.util;
 
+import com.google.common.primitives.Ints;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -202,7 +204,7 @@ public class Tools {
      */
     @Contract("null -> false")
     public static boolean isNotBlank(@Nullable CharSequence cs) {
-        return StringUtils.isNotBlank(cs);
+        return StrUtil.isNotBlank(cs);
     }
 
     /**
@@ -248,7 +250,7 @@ public class Tools {
      */
     @Contract("null -> false")
     public static boolean isNotEmpty(@Nullable Object obj) {
-        return !ObjectUtils.isEmpty(obj);
+        return ObjectUtil.isNotEmpty(obj);
     }
 
     /**
@@ -260,7 +262,7 @@ public class Tools {
      */
     @Contract(value = "null -> true", pure = true)
     public static boolean isEmpty(@Nullable Object[] array) {
-        return ObjectUtils.isEmpty(array);
+        return ObjectUtil.isEmpty(array);
     }
 
     /**
@@ -272,7 +274,7 @@ public class Tools {
      */
     @Contract("null -> false")
     public static boolean isNotEmpty(@Nullable Object[] array) {
-        return ObjectUtils.isNotEmpty(array);
+        return ObjectUtil.isNotEmpty(array);
     }
 
     /**
@@ -331,7 +333,7 @@ public class Tools {
      */
     @Contract("null, _ -> null; !null, null -> !null")
     public static String format(@Nullable String message, @Nullable Map<String, Object> params) {
-        return StringUtils.format(message, params);
+        return StrFormatter.format(message, params);
     }
 
     /**
@@ -1135,5 +1137,29 @@ public class Tools {
         return JsonUtils.toMap(content, keyClass, valueClass);
     }
 
-
+    /**
+     * 初始化 map 容量
+     *
+     * @param expectedSize the expected size
+     * @return the int
+     * @since 1.0.0
+     */
+    @Contract(pure = true)
+    @SuppressWarnings("PMD.UndefineMagicConstantRule")
+    public static int capacity(int expectedSize) {
+        if (expectedSize < 3) {
+            if (expectedSize < 0) {
+                throw new IllegalArgumentException("expectedSize cannot be negative but was: " + expectedSize);
+            }
+            return expectedSize + 1;
+        }
+        if (expectedSize < Ints.MAX_POWER_OF_TWO) {
+            // This is the calculation used in JDK8 to resize when a putAll
+            // happens; it seems to be the most conservative calculation we
+            // can make.  0.75 is the default load factor.
+            return (int) ((float) expectedSize / 0.75F + 1.0F);
+        }
+        // any large value
+        return Integer.MAX_VALUE;
+    }
 }

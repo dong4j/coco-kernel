@@ -80,7 +80,7 @@ public class KernelException extends RuntimeException {
     }
 
     public KernelException(String code, String msg) {
-        super(code, msg);
+        super(msg);
         this.resultCode = new IResultCode() {
             @Serial
             private static final long serialVersionUID = 2590640370242410124L;
@@ -111,7 +111,7 @@ public class KernelException extends RuntimeException {
      * @since 1.0.0
      */
     public KernelException(String msg, Object... args) {
-        super(msg, args);
+        super(msg);
         this.resultCode = BaseCodes.FAILURE;
     }
 
@@ -223,7 +223,6 @@ public class KernelException extends RuntimeException {
      * @return the string
      * @since 1.6.0
      */
-    @Override
     public String getCode() {
         return ResultCodeUtils.generateCode(this.resultCode);
     }

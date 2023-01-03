@@ -8,6 +8,8 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import cn.hutool.core.util.StrUtil;
+
 /**
  * <p>Description: 链式 map (linkedmap) key 必须为 string </p>
  *
@@ -129,7 +131,7 @@ public final class ChainMap extends LinkedCaseInsensitiveMap<Object> {
      * @since 1.0.0
      */
     public String getStr(String attr) {
-        return Tools.toStr(get(attr), null);
+        return StrUtil.toStringOrNull(get(attr));
     }
 
     /**
