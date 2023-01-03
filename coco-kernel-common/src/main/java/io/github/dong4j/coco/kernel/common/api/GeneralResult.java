@@ -1,7 +1,5 @@
 package io.github.dong4j.coco.kernel.common.api;
 
-import io.github.dong4j.coco.kernel.common.Result;
-
 /**
  * <p>Description:  </p>
  *

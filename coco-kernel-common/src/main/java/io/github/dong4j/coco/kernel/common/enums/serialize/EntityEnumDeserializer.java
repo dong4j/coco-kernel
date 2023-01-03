@@ -1,6 +1,5 @@
 package io.github.dong4j.coco.kernel.common.enums.serialize;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -12,6 +11,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeType;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.io.Serializable;

@@ -9,12 +9,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 import cn.hutool.core.text.StrPool;
-import io.github.dong4j.coco.kernel.common.Result;
 import io.github.dong4j.coco.kernel.common.annotation.BusinessLevel;
 import io.github.dong4j.coco.kernel.common.annotation.ModelSerial;
 import io.github.dong4j.coco.kernel.common.annotation.SystemLevel;
 import io.github.dong4j.coco.kernel.common.annotation.ThirdLevel;
 import io.github.dong4j.coco.kernel.common.api.IResultCode;
+import io.github.dong4j.coco.kernel.common.api.Result;
 import io.github.dong4j.coco.kernel.common.asserts.Assertions;
 import lombok.experimental.UtilityClass;
 

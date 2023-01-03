@@ -23,7 +23,6 @@ import lombok.experimental.UtilityClass;
  * @since 1.7.0
  */
 @UtilityClass
-@SuppressWarnings("all")
 class AssertUtils {
 
     /**
@@ -76,7 +75,7 @@ class AssertUtils {
      */
     @Contract("null -> new")
     static Exception nullSafeGetException(@Nullable Supplier<? extends RuntimeException> exceptionSupplier) {
-        return (exceptionSupplier != null ? exceptionSupplier.get() : new AssertionFailedException());
+        return exceptionSupplier != null ? exceptionSupplier.get() : new AssertionFailedException();
     }
 
     /**
@@ -88,7 +87,7 @@ class AssertUtils {
      * @since 1.6.0
      */
     static void instanceCheckFailed(Class<?> type, @Nullable Object obj, @Nullable String message) {
-        String className = (obj != null ? obj.getClass().getName() : "null");
+        String className = obj != null ? obj.getClass().getName() : "null";
         String result = "";
         boolean defaultMessage = true;
         if (StrUtil.isNotBlank(message)) {
@@ -138,7 +137,7 @@ class AssertUtils {
      * @since 1.6.0
      */
     static boolean endsWithSeparator(@NotNull String message) {
-        return (message.endsWith(":") || message.endsWith(";") || message.endsWith(",") || message.endsWith("."));
+        return message.endsWith(":") || message.endsWith(";") || message.endsWith(",") || message.endsWith(".");
     }
 
     /**
@@ -239,7 +238,7 @@ class AssertUtils {
     @Contract(value = "null, null -> true; null, !null -> false", pure = true)
     static boolean objectsAreEqual(Object o1, Object o2) {
         if (o1 == null) {
-            return (o2 == null);
+            return o2 == null;
         }
         return o1.equals(o2);
     }

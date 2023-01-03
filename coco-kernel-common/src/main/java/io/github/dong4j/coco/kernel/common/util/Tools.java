@@ -1,5 +1,6 @@
 package io.github.dong4j.coco.kernel.common.util;
 
+import com.google.common.collect.Maps;
 import com.google.common.primitives.Ints;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -13,9 +14,11 @@ import org.jetbrains.annotations.Nullable;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
@@ -1161,5 +1164,20 @@ public class Tools {
         }
         // any large value
         return Integer.MAX_VALUE;
+    }
+
+    /**
+     * Properties -> map
+     *
+     * @param properties properties
+     * @return the map from properties
+     * @since 1.0.0
+     */
+    public static @NotNull Map<String, Object> getMapFromProperties(@NotNull Properties properties) {
+        Map<String, Object> map = Maps.newHashMap();
+        for (Object key : Collections.list(properties.propertyNames())) {
+            map.put((String) key, properties.get(key));
+        }
+        return map;
     }
 }

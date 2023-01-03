@@ -18,6 +18,7 @@ package io.github.dong4j.coco.kernel.common.util;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.AbstractCollection;
 import java.util.AbstractSet;
@@ -44,12 +45,13 @@ import java.util.function.Function;
  * @param <V> the value type
  * @author Juergen Hoeller
  * @version 1.0.0
- * @email "mailto:Spark.Team@gmail.com"
  * @date 2023.01.03 09:58
  * @since 3.0
  */
 public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable, Cloneable {
 
+    @Serial
+    private static final long serialVersionUID = 2500492308859765730L;
     /** Target map */
     private final LinkedHashMap<String, V> targetMap;
 
@@ -135,7 +137,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
             }
         };
         this.caseInsensitiveKeys = new HashMap<>(initialCapacity);
-        this.locale = (locale != null ? locale : Locale.getDefault());
+        this.locale = locale != null ? locale : Locale.getDefault();
     }
 
     /**
@@ -185,7 +187,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
      */
     @Override
     public boolean containsKey(Object key) {
-        return (key instanceof String && this.caseInsensitiveKeys.containsKey(convertKey((String) key)));
+        return key instanceof String && this.caseInsensitiveKeys.containsKey(convertKey((String) key));
     }
 
     /**
@@ -256,7 +258,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
             oldKeyValue = this.targetMap.remove(oldKey);
         }
         V oldValue = this.targetMap.put(key, value);
-        return (oldKeyValue != null ? oldKeyValue : oldValue);
+        return oldKeyValue != null ? oldKeyValue : oldValue;
     }
 
     /**
@@ -394,6 +396,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
      * @since 2023.1.1
      */
     @Override
+    @SuppressWarnings("checkstyle:SuperClone")
     public LinkedCaseInsensitiveMap<V> clone() {
         return new LinkedCaseInsensitiveMap<>(this);
     }
@@ -407,7 +410,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
      */
     @Override
     public boolean equals(@Nullable Object other) {
-        return (this == other || this.targetMap.equals(other));
+        return this == other || this.targetMap.equals(other);
     }
 
     /**
@@ -489,9 +492,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
     /**
      * <p>Description: </p>
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */
@@ -593,9 +594,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
     /**
      * <p>Description: </p>
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */
@@ -685,9 +684,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
     /**
      * <p>Description: </p>
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */
@@ -702,7 +699,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
          * @param delegate delegate
          * @since 2023.1.1
          */
-        public EntrySet(Set<Entry<String, V>> delegate) {
+        EntrySet(Set<Entry<String, V>> delegate) {
             this.delegate = delegate;
         }
 
@@ -796,9 +793,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
      * <p>Description: </p>
      *
      * @param <T> parameter
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */
@@ -816,7 +811,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
          *
          * @since 2023.1.1
          */
-        public EntryIterator() {
+        EntryIterator() {
             this.delegate = targetMap.entrySet().iterator();
         }
 
@@ -862,9 +857,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
     /**
      * <p>Description: </p>
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */
@@ -886,9 +879,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
     /**
      * <p>Description: </p>
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */
@@ -910,9 +901,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
     /**
      * <p>Description: </p>
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */

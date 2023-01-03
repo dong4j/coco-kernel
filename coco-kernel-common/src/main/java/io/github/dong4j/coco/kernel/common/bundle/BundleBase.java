@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 import cn.hutool.core.text.StrFormatter;
 import io.github.dong4j.coco.kernel.common.support.OrdinalFormat;
-import io.github.dong4j.coco.kernel.common.support.SystemInfoRt;
+import io.github.dong4j.coco.kernel.common.util.SystemUtils;
 
 /**
  * <p>Description: 国际化配置文件绑定基类</p>
@@ -194,11 +194,11 @@ public abstract class BundleBase {
                 }
             } else if (c == '&') {
                 if (i < value.length() - 1 && value.charAt(i + 1) == '&') {
-                    if (SystemInfoRt.IS_MAC) {
+                    if (SystemUtils.isMac()) {
                         builder.append(MNEMONIC);
                     }
                     i++;
-                } else if (!SystemInfoRt.IS_MAC || !macMnemonic) {
+                } else if (!SystemUtils.isMac() || !macMnemonic) {
                     builder.append(MNEMONIC);
                 }
             } else {

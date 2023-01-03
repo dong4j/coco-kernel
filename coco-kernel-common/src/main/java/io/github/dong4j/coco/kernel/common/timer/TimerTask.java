@@ -22,9 +22,7 @@ import java.util.concurrent.TimeUnit;
  * A task which is executed after the delay specified with
  * {@link Timer#newTimeout(TimerTask, long, TimeUnit)} (TimerTask, long, TimeUnit)}.
  *
- * @author Spark.Team
  * @version 1.0.0
- * @email "mailto:Spark.Team@gmail.com"
  * @date 2023.01.03 09:58
  * @since 2023.1.1
  */

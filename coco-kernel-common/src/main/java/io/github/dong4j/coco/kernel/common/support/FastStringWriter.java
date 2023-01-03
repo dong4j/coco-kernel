@@ -91,9 +91,12 @@ public class FastStringWriter extends Writer {
      * @since 1.0.0
      */
     @Override
-    public void write(char[] cbuilder, int off, int len) {
-        if ((off < 0) || (off > cbuilder.length)
-            || (len < 0) || ((off + len) > cbuilder.length) || ((off + len) < 0)) {
+    public void write(char @NotNull [] cbuilder, int off, int len) {
+        if (off < 0
+            || off > cbuilder.length
+            || len < 0
+            || off + len > cbuilder.length
+            || off + len < 0) {
             throw new IndexOutOfBoundsException();
         } else if (len == 0) {
             return;
@@ -153,7 +156,7 @@ public class FastStringWriter extends Writer {
      */
     @Override
     public FastStringWriter append(CharSequence csq, int start, int end) {
-        CharSequence cs = (csq == null ? "null" : csq);
+        CharSequence cs = csq == null ? "null" : csq;
         this.write(cs.subSequence(start, end).toString());
         return this;
     }

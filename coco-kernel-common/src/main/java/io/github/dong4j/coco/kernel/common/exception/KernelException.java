@@ -118,7 +118,7 @@ public class KernelException extends RuntimeException {
      * @since 1.0.0
      */
     public KernelException(String msg, Object... args) {
-        super(msg);
+        super(StrFormatter.format(msg, args));
         this.resultCode = BaseCodes.FAILURE;
     }
 

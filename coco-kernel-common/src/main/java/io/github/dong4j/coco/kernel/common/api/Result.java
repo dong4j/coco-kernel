@@ -1,4 +1,4 @@
-package io.github.dong4j.coco.kernel.common;
+package io.github.dong4j.coco.kernel.common.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.Serializable;
 
 import cn.hutool.core.text.StrPool;
+import io.github.dong4j.coco.kernel.common.KernelBundle;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,24 +18,17 @@ import lombok.ToString;
 
 /**
  * <p>Description: 请求响应返回结构封装, 所有请求都要求返回此类.
- * 为避免在 v4 中引入过多的 v5 依赖, 我们将 {@link Result} 分为了 2 个子类, 分别是 {@link StandardResult} 和 {@link info.spark.starter.core.api.R},
- * StandardResult 在 v4 使用, R 在 v5 使用.
  * {@code
- * Result<Data> result = StandardResult.success(data);
  * Result<Data> result = R.success(data);
  * <p>
  * 反序列化:
  * Result<Data> result = JsonUtils.parse(json, new TypeReference<Result<Data>>(){});
  * Result result = JsonUtils.parse(json, Result.class);
- * }**
+ * }
  * <p>
- * 由于 jackson 在反序列化抽象类时存在多态问题, 我们使用 {@link Result#TYPE_NAME} 来标识 json 需要被反序列化的 class, 为了避免 v5 的响应 json 数据在 v4 中反序列化失败,
- * 我们将所有的 json 都添加了 {@link Result#TYPE_NAME}, 全部都将反序列化为 {@link StandardResult}, 业务端在处理 json 结果时, 应该忽略 'type' 字段.
- * 比较推荐的反序列化方式是根据不同的框架来进行反序列化, 避免使用 {@link Result}:
  * {@code
- * v4: Result result = JsonUtils.parse(json, StandardResult.class);
- * v5: Result result = JsonUtils.parse(json, R.class);
- * }**
+ * Result result = JsonUtils.parse(json, R.class);
+ * }
  * </p>
  *
  * @param <T> parameter
@@ -48,7 +42,6 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-@SuppressWarnings("all")
 public abstract class Result<T> implements Serializable {
 
     /** serialVersionUID */
@@ -105,11 +98,11 @@ public abstract class Result<T> implements Serializable {
         }
         this.data = data;
         this.message = message;
-        this.success = (SUCCESS_CODE.equals(code));
+        this.success = SUCCESS_CODE.equals(code);
     }
 
     /**
-     * Is ok boolean
+     * Is ok
      *
      * @return the boolean
      * @since 1.0.0
@@ -128,7 +121,7 @@ public abstract class Result<T> implements Serializable {
      */
     @Contract("null -> false")
     public static boolean isOk(@Nullable Result<?> result) {
-        return result != null && (SUCCESS_CODE.equals(result.getCode()) && result.isSuccess());
+        return result != null && SUCCESS_CODE.equals(result.getCode()) && result.isSuccess();
     }
 
     /**

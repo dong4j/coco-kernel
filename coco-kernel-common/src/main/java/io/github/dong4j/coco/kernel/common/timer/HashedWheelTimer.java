@@ -78,9 +78,7 @@ import cn.hutool.core.util.ClassUtil;
  * timer facility'</a>.  More comprehensive slides are located
  * <a href="http://www.cse.wustl.edu/~cdgill/courses/cs6874/TimingWheels.ppt">here</a>.
  *
- * @author Spark.Team
  * @version 1.0.0
- * @email "mailto:Spark.Team@gmail.com"
  * @date 2023.01.03 09:58
  * @since 2023.1.1
  */
@@ -504,9 +502,7 @@ public class HashedWheelTimer implements Timer {
     /**
      * <p>Description: </p>
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */
@@ -665,9 +661,7 @@ public class HashedWheelTimer implements Timer {
     /**
      * <p>Description: </p>
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */
@@ -887,9 +881,7 @@ public class HashedWheelTimer implements Timer {
      * removal of HashedWheelTimeouts in the middle. Also the HashedWheelTimeout act as nodes themself and so no
      * extra object creation is needed.
      *
-     * @author Spark.Team
      * @version 1.0.0
-     * @email "mailto:Spark.Team@gmail.com"
      * @date 2023.01.03 09:58
      * @since 2023.1.1
      */

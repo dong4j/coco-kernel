@@ -44,7 +44,7 @@ public final class ConfigDefaultValue {
     /** RIBBON_NAME */
     public static final String RIBBON_NAME = "gateway";
     /** BASE_PACKAGES */
-    public static final String BASE_PACKAGES = System.getProperty("PARENT_PACKAGE_NAME", "info.spark");
+    public static final String BASE_PACKAGES = System.getProperty("PARENT_PACKAGE_NAME", "io.github.dong4j.coco");
     /** CONTAINER_LOCATION */
     public static final String CONTAINER_LOCATION = "/mnt/tmp";
     /** v5 服务默认的日志主目录 */

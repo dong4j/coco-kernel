@@ -31,9 +31,7 @@ import static java.util.stream.Collectors.toList;
  * @param <T> parameter
  * @author hubin
  * @version 1.0.0
- * @email "mailto:Spark.Team@gmail.com"
  * @date 2023.01.03 09:58
- * @since 2018 -06-09
  */
 public interface IPage<T> extends Serializable {
 

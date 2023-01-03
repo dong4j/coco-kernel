@@ -13,7 +13,6 @@ import io.github.dong4j.coco.kernel.common.exception.AssertionFailedException;
  * @date 2020.11.18 18:06
  * @since 1.7.0
  */
-@SuppressWarnings("all")
 final class AssertNotEquals {
     /** DEFAULT_MESSAGE */
     private static final String DEFAULT_MESSAGE = "2 个参数不能相等";
@@ -226,13 +225,13 @@ final class AssertNotEquals {
     /**
      * Not equals
      *
-     * @param unexpected unexpected
-     * @param actual     actual
-     * @param delta      delta
-     * @param message    message
+     * @param unexpected   unexpected
+     * @param actual       actual
+     * @param ignoredDelta delta
+     * @param message      message
      * @since 1.7.0
      */
-    static void notEquals(float unexpected, float actual, float delta, String message) {
+    static void notEquals(float unexpected, float actual, float ignoredDelta, String message) {
         notEquals(unexpected, actual, () -> new AssertionFailedException(message));
     }
 
@@ -303,13 +302,13 @@ final class AssertNotEquals {
     /**
      * Not equals
      *
-     * @param unexpected unexpected
-     * @param actual     actual
-     * @param delta      delta
-     * @param message    message
+     * @param unexpected   unexpected
+     * @param actual       actual
+     * @param ignoredDelta delta
+     * @param message      message
      * @since 1.7.0
      */
-    static void notEquals(double unexpected, double actual, double delta, String message) {
+    static void notEquals(double unexpected, double actual, double ignoredDelta, String message) {
         notEquals(unexpected, actual, () -> new AssertionFailedException(message));
     }
 
@@ -405,11 +404,12 @@ final class AssertNotEquals {
     /**
      * Fail equal
      *
-     * @param actual          actual
+     * @param ignoredActual   actual
      * @param messageSupplier message supplier
      * @since 1.7.0
      */
-    private static void failEqual(Object actual, Supplier<? extends RuntimeException> messageSupplier) {
+    private static void failEqual(Object ignoredActual, Supplier<? extends RuntimeException> messageSupplier) {
+
         AssertUtils.fail(messageSupplier);
     }
 

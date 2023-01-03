@@ -24,9 +24,7 @@ import java.util.concurrent.TimeUnit;
  * Schedules {@link TimerTask}s for one-time future execution in a background
  * thread.
  *
- * @author Spark.Team
  * @version 1.0.0
- * @email "mailto:Spark.Team@gmail.com"
  * @date 2023.01.03 09:58
  * @since 2023.1.1
  */

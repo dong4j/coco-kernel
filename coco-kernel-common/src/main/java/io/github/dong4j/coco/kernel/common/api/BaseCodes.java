@@ -1,7 +1,6 @@
 package io.github.dong4j.coco.kernel.common.api;
 
 import io.github.dong4j.coco.kernel.common.KernelBundle;
-import io.github.dong4j.coco.kernel.common.Result;
 import io.github.dong4j.coco.kernel.common.annotation.BusinessLevel;
 import io.github.dong4j.coco.kernel.common.annotation.ModelSerial;
 import io.github.dong4j.coco.kernel.common.annotation.SystemLevel;

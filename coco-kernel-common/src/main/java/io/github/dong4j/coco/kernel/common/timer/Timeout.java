@@ -20,9 +20,7 @@ package io.github.dong4j.coco.kernel.common.timer;
  * A handle associated with a {@link TimerTask} that is returned by a
  * {@link Timer}.
  *
- * @author Spark.Team
  * @version 1.0.0
- * @email "mailto:Spark.Team@gmail.com"
  * @date 2023.01.03 09:58
  * @since 2023.1.1
  */

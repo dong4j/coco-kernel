@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.Map;
 
 import cn.hutool.core.text.StrFormatter;
-import io.github.dong4j.coco.kernel.common.Result;
 import io.github.dong4j.coco.kernel.common.util.ChainMap;
 import io.github.dong4j.coco.kernel.common.util.ResultCodeUtils;
 
@@ -28,7 +27,7 @@ import io.github.dong4j.coco.kernel.common.util.ResultCodeUtils;
  * @since 1.0.0
  */
 @JsonTypeName(value = Result.TYPE_NAME)
-@SuppressWarnings( {"PMD.ClassNamingShouldBeCamelRule"})
+@SuppressWarnings(value = {"PMD.ClassNamingShouldBeCamelRule"})
 public final class R<T> extends Result<T> {
     /** serialVersionUID */
     @Serial
