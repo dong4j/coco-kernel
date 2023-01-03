@@ -1485,6 +1485,7 @@ public class Assertions {
      *
      * @param runnable 可运行的
      * @param message  消息
+     * @since 2023.1.1
      */
     public static void wrapper(CheckedRunnable runnable, String message) {
         try {

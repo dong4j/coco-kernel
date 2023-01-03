@@ -79,6 +79,13 @@ public class KernelException extends RuntimeException {
         };
     }
 
+    /**
+     * Kernel exception
+     *
+     * @param code code
+     * @param msg  msg
+     * @since 2023.1.1
+     */
     public KernelException(String code, String msg) {
         super(msg);
         this.resultCode = new IResultCode() {

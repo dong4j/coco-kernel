@@ -26,7 +26,7 @@ import lombok.ToString;
  * 反序列化:
  * Result<Data> result = JsonUtils.parse(json, new TypeReference<Result<Data>>(){});
  * Result result = JsonUtils.parse(json, Result.class);
- * }*
+ * }**
  * <p>
  * 由于 jackson 在反序列化抽象类时存在多态问题, 我们使用 {@link Result#TYPE_NAME} 来标识 json 需要被反序列化的 class, 为了避免 v5 的响应 json 数据在 v4 中反序列化失败,
  * 我们将所有的 json 都添加了 {@link Result#TYPE_NAME}, 全部都将反序列化为 {@link StandardResult}, 业务端在处理 json 结果时, 应该忽略 'type' 字段.
@@ -34,7 +34,7 @@ import lombok.ToString;
  * {@code
  * v4: Result result = JsonUtils.parse(json, StandardResult.class);
  * v5: Result result = JsonUtils.parse(json, R.class);
- * }*
+ * }**
  * </p>
  *
  * @param <T> parameter
@@ -95,7 +95,6 @@ public abstract class Result<T> implements Serializable {
      * @param code    code
      * @param message message
      * @param data    data
-     * @param traceId trace id
      * @since 1.0.0
      */
     @Contract(pure = true)

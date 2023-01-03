@@ -19,29 +19,47 @@ package io.github.dong4j.coco.kernel.common.timer;
 /**
  * A handle associated with a {@link TimerTask} that is returned by a
  * {@link Timer}.
+ *
+ * @author Spark.Team
+ * @version 1.0.0
+ * @email "mailto:Spark.Team@gmail.com"
+ * @date 2023.01.03 09:58
+ * @since 2023.1.1
  */
 @SuppressWarnings("all")
 public interface Timeout {
 
     /**
      * Returns the {@link Timer} that created this handle.
+     *
+     * @return the timer
+     * @since 2023.1.1
      */
     Timer timer();
 
     /**
      * Returns the {@link TimerTask} which is associated with this handle.
+     *
+     * @return the timer task
+     * @since 2023.1.1
      */
     TimerTask task();
 
     /**
      * Returns {@code true} if and only if the {@link TimerTask} associated
      * with this handle has been expired.
+     *
+     * @return the boolean
+     * @since 2023.1.1
      */
     boolean isExpired();
 
     /**
      * Returns {@code true} if and only if the {@link TimerTask} associated
      * with this handle has been cancelled.
+     *
+     * @return the boolean
+     * @since 2023.1.1
      */
     boolean isCancelled();
 
@@ -51,6 +69,7 @@ public interface Timeout {
      * no side effect.
      *
      * @return True if the cancellation completed successfully, otherwise false
+     * @since 2023.1.1
      */
     boolean cancel();
 }

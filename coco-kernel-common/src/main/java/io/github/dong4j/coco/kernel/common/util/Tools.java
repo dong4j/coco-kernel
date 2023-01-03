@@ -199,7 +199,7 @@ public class Tools {
      *
      * @param cs the CharSequence to check, may be null
      * @return {@code true} if the CharSequence is     not empty and not null and not whitespace
-     * @see Character#isWhitespace Character#isWhitespaceCharacter#isWhitespaceCharacter#isWhitespaceCharacter#isWhitespace
+     * @see Character#isWhitespace
      * @since 1.0.0
      */
     @Contract("null -> false")
@@ -768,8 +768,8 @@ public class Tools {
      *
      * @param cs the {@code CharSequence} to check (may be {@code null})
      * @return {@code true} if the {@code CharSequence} is not {@code null},     its length is greater than 0, and it does not contain
-     *     whitespace only
-     * @see Character#isWhitespace Character#isWhitespaceCharacter#isWhitespaceCharacter#isWhitespaceCharacter#isWhitespace
+     * whitespace only
+     * @see Character#isWhitespace
      * @since 1.0.0
      */
     @Contract("null -> true")

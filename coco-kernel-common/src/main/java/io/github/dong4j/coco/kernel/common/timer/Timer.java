@@ -23,6 +23,12 @@ import java.util.concurrent.TimeUnit;
 /**
  * Schedules {@link TimerTask}s for one-time future execution in a background
  * thread.
+ *
+ * @author Spark.Team
+ * @version 1.0.0
+ * @email "mailto:Spark.Team@gmail.com"
+ * @date 2023.01.03 09:58
+ * @since 2023.1.1
  */
 @SuppressWarnings("all")
 public interface Timer {
@@ -31,10 +37,14 @@ public interface Timer {
      * Schedules the specified {@link TimerTask} for one-time execution after
      * the specified delay.
      *
+     * @param task  task
+     * @param delay delay
+     * @param unit  unit
      * @return a handle which is associated with the specified task
      * @throws IllegalStateException      if this timer has been {@linkplain #stop() stopped} already
      * @throws RejectedExecutionException if the pending timeouts are too many and creating new timeout
      *                                    can cause instability in the system.
+     * @since 2023.1.1
      */
     Timeout newTimeout(TimerTask task, long delay, TimeUnit unit);
 
@@ -42,8 +52,8 @@ public interface Timer {
      * Releases all resources acquired by this {@link Timer} and cancels all
      * tasks which were scheduled but not executed yet.
      *
-     * @return the handles associated with the tasks which were canceled by
-     *     this method
+     * @return the handles associated with the tasks which were canceled by     this method
+     * @since 2023.1.1
      */
     Set<Timeout> stop();
 
@@ -51,6 +61,7 @@ public interface Timer {
      * the timer is stop
      *
      * @return true for stop
+     * @since 2023.1.1
      */
     boolean isStop();
 }

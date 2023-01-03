@@ -26,7 +26,7 @@ import java.lang.annotation.Target;
  * private final int code;
  * private final String descp;
  * }
- * }*
+ * }**
  * </p>
  *
  * @author yuxiaobin

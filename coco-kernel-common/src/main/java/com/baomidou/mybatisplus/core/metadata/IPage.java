@@ -28,15 +28,20 @@ import static java.util.stream.Collectors.toList;
 /**
  * 分页 Page 对象接口
  *
+ * @param <T> parameter
  * @author hubin
- * @since 2018-06-09
+ * @version 1.0.0
+ * @email "mailto:Spark.Team@gmail.com"
+ * @date 2023.01.03 09:58
+ * @since 2018 -06-09
  */
 public interface IPage<T> extends Serializable {
 
     /**
      * 获取排序信息，排序的字段和正反序
      *
-     * @return 排序信息
+     * @return 排序信息 list
+     * @since 2023.1.1
      */
     List<OrderItem> orders();
 
@@ -44,6 +49,7 @@ public interface IPage<T> extends Serializable {
      * 自动优化 COUNT SQL【 默认：true 】
      *
      * @return true 是 / false 否
+     * @since 2023.1.1
      */
     default boolean optimizeCountSql() {
         return true;
@@ -63,6 +69,7 @@ public interface IPage<T> extends Serializable {
      * 进行 count 查询 【 默认: true 】
      *
      * @return true 是 / false 否
+     * @since 2023.1.1
      */
     default boolean searchCount() {
         return true;
@@ -70,6 +77,9 @@ public interface IPage<T> extends Serializable {
 
     /**
      * 计算当前分页偏移量
+     *
+     * @return the long
+     * @since 2023.1.1
      */
     default long offset() {
         long current = getCurrent();
@@ -82,6 +92,7 @@ public interface IPage<T> extends Serializable {
     /**
      * 最大每页分页数限制,优先级高于分页插件内的 maxLimit
      *
+     * @return the long
      * @since 3.4.0 @2020-07-17
      */
     default Long maxLimit() {
@@ -90,6 +101,9 @@ public interface IPage<T> extends Serializable {
 
     /**
      * 当前分页总页数
+     *
+     * @return the pages
+     * @since 2023.1.1
      */
     default long getPages() {
         if (getSize() == 0) {
@@ -105,6 +119,10 @@ public interface IPage<T> extends Serializable {
     /**
      * 内部什么也不干
      * <p>只是为了 json 反序列化时不报错</p>
+     *
+     * @param pages pages
+     * @return the pages
+     * @since 2023.1.1
      */
     default IPage<T> setPages(long pages) {
         // to do nothing
@@ -114,57 +132,78 @@ public interface IPage<T> extends Serializable {
     /**
      * 分页记录列表
      *
-     * @return 分页对象记录列表
+     * @return 分页对象记录列表 records
+     * @since 2023.1.1
      */
     List<T> getRecords();
 
     /**
      * 设置分页记录列表
+     *
+     * @param records records
+     * @return the records
+     * @since 2023.1.1
      */
     IPage<T> setRecords(List<T> records);
 
     /**
      * 当前满足条件总行数
      *
-     * @return 总条数
+     * @return 总条数 total
+     * @since 2023.1.1
      */
     long getTotal();
 
     /**
      * 设置当前满足条件总行数
+     *
+     * @param total total
+     * @return the total
+     * @since 2023.1.1
      */
     IPage<T> setTotal(long total);
 
     /**
      * 获取每页显示条数
      *
-     * @return 每页显示条数
+     * @return 每页显示条数 size
+     * @since 2023.1.1
      */
     long getSize();
 
     /**
      * 设置每页显示条数
+     *
+     * @param size size
+     * @return the size
+     * @since 2023.1.1
      */
     IPage<T> setSize(long size);
 
     /**
      * 当前页
      *
-     * @return 当前页
+     * @return 当前页 current
+     * @since 2023.1.1
      */
     long getCurrent();
 
     /**
      * 设置当前页
+     *
+     * @param current current
+     * @return the current
+     * @since 2023.1.1
      */
     IPage<T> setCurrent(long current);
 
     /**
      * IPage 的泛型转换
      *
-     * @param mapper 转换函数
      * @param <R>    转换后的泛型
+     * @param mapper 转换函数
      * @return 转换泛型后的 IPage
+     * @since 2023.1.1
      */
     @SuppressWarnings("unchecked")
     default <R> IPage<R> convert(Function<? super T, ? extends R> mapper) {
@@ -177,7 +216,7 @@ public interface IPage<T> extends Serializable {
      * <p>
      * MappedStatement 的 id
      *
-     * @return id
+     * @return id string
      * @since 3.4.0 @2020-06-19
      */
     default String countId() {
